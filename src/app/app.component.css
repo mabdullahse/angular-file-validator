@@ -1,0 +1,12 @@
+.container {
+  margin: 5rem auto;
+  text-align: center;
+}
+.image-preview {
+  height: 5rem;
+  margin: 1px 0px;
+}
+
+.image-preview img {
+  height: 100%;
+}

@@ -119,6 +119,50 @@
           }
         }
       }
-    }},
-  "defaultProject": "NgFileValidator"
+    },
+    "NgFileValidatorLib": {
+      "projectType": "library",
+      "root": "projects/ng-file-validator-lib",
+      "sourceRoot": "projects/ng-file-validator-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-file-validator-lib/tsconfig.lib.json",
+            "project": "projects/ng-file-validator-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-file-validator-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-file-validator-lib/src/test.ts",
+            "tsConfig": "projects/ng-file-validator-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-file-validator-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-file-validator-lib/tsconfig.lib.json",
+              "projects/ng-file-validator-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "NgFileValidator",
+  "cli": {
+    "analytics": false
+  }
 }

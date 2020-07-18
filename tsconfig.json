@@ -15,6 +15,12 @@
     },
     {
       "path": "./e2e/tsconfig.json"
+    },
+    {
+      "path": "./projects/ng-file-validator-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-file-validator-lib/tsconfig.spec.json"
     }
 ]
 }
