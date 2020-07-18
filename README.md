@@ -78,3 +78,4 @@ export class AppComponent implements OnInit {
  3. jpeg
  4. gif
  
+ so we can use as  [FileCheck.ngFileValidator(['png', 'jpeg','gif','jpeg'])]
