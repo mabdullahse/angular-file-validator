@@ -1,27 +1,80 @@
 # NgFileValidator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+Check the image file of a Buffer/Uint8Array that matched expected image MIME-type
 
-## Development server
+## Install
+```
+$ npm i angular-file-validator
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Usage
 
-## Code scaffolding
+Its just involve only two steps
+a. import NgFileValidatorLibModule in app.modules.ts
+b. import FileCheck in our desired component
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##### App.Module.ts
 
-## Build
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+import { ReactiveFormsModule } from '@angular/forms'
+import { AppComponent } from './app.component';
+import { NgFileValidatorLibModule } from '@ng/file-validator'
 
-## Running unit tests
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgFileValidatorLibModule,
+    ReactiveFormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
 
-## Running end-to-end tests
+#### App.component.ts
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```ts
+import { Component, OnInit, } from '@angular/core';
+import { FormGroup, FormControl, Validators, } from '@angular/forms';
+import { FileCheck } from '@ng/file-validator' // <-------
 
-## Further help
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  form: FormGroup
+  filePreview: String
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+  ngOnInit(): void {
+
+    this.form = new FormGroup({
+
+      image: new FormControl(null, {
+        validators: Validators.required,
+        asyncValidators: [FileCheck.ngFileValidator(['png', 'jpeg'])] // <-------
+      })
+    })
+  }
+
+``` 
+
+ 
+
+## Supported file types
+ It can check the following file formates
+ 1. png
+ 2. jpg
+ 3. jpeg
+ 4. gif
+ 
