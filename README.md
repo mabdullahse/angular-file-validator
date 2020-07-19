@@ -10,7 +10,9 @@ $ npm i angular-file-validator
 ## Usage
 
 Its just involve only two steps
+
 a. import NgFileValidatorLibModule in app.modules.ts
+
 b. import FileCheck in our desired component
 
 ##### App.Module.ts
@@ -68,8 +70,24 @@ export class AppComponent implements OnInit {
   }
 
 ``` 
+## Error Message
+In case of Invalid file type it will throw error :
+```js
+{ invalidMimeType: true }
+```
+
+## Note:
+To handle edit case this validator will not throw error in case of string being patch to image form field
+It will only check if field of type File.
+
+For example :
 
  
+ ```ts
+   this.form.setValue({
+                 image: post.imagePath  // <--- post containg imagePath of type String  | it will be considered as valid
+       })
+ ```
 
 ## Supported file types
  It can check the following file formates
